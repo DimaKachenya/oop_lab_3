@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dima Kachenya\\Desktop\\git repo\\LP_LAB_3\\taska_3\\taska_3.csproj": {}
+    "D:\\C#\\taska_3\\taska_3\\taska_3.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dima Kachenya\\Desktop\\git repo\\LP_LAB_3\\taska_3\\taska_3.csproj": {
+    "D:\\C#\\taska_3\\taska_3\\taska_3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dima Kachenya\\Desktop\\git repo\\LP_LAB_3\\taska_3\\taska_3.csproj",
+        "projectUniqueName": "D:\\C#\\taska_3\\taska_3\\taska_3.csproj",
         "projectName": "taska_3",
-        "projectPath": "C:\\Users\\Dima Kachenya\\Desktop\\git repo\\LP_LAB_3\\taska_3\\taska_3.csproj",
+        "projectPath": "D:\\C#\\taska_3\\taska_3\\taska_3.csproj",
         "packagesPath": "C:\\Users\\Dima Kachenya\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dima Kachenya\\Desktop\\git repo\\LP_LAB_3\\taska_3\\obj\\",
+        "outputPath": "D:\\C#\\taska_3\\taska_3\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Dima Kachenya\\AppData\\Roaming\\NuGet\\NuGet.Config",

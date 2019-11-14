@@ -10,33 +10,38 @@ using System.Threading.Tasks;
 
 namespace taska_3
 {
-    public  partial class phone
+    public partial class Phone
     {
-    public void Move()
+        public void Move()
         {
-            Console.WriteLine( "I am Partial class" );
+            Console.WriteLine("I am Partial class");
         }
-
     }
-
-    public  partial class phone
+    public partial class Phone
     {
-
-
         public static string region;
-        private int user_phone;
-        private int user_age;
-        private string user_name;
-        private string user_code;
-
-
-        public int User_phone {
-            get { return user_phone; }
-            set
+        private string userFhone;
+        private int userAge;
+        private string userName;
+        private string userCode;
+        public string UserFhone
+        {
+            get { return userFhone; }
+            set//проверим сначало длину , а потом проверим каждый символ , является ли он цифрой 
             {
-                if (1000000 <= value && value <= 9999999)
+                if (value.Length == 7)
                 {
-                    user_phone = value;
+                    for (int i = 0; i < 7; i++)
+                    {
+                        if (!(value[i] == '0' || value[i] == '1' || value[i] == '2' || value[i] == '3' ||
+                            value[i] == '4' || value[i] == '5' || value[i] == '6' || value[i] == '7' |
+                            value[i] == '8' || value[i] == '9'))
+                        {
+                            Console.WriteLine("Incorrect date");
+                            break;
+                        }
+                    }
+                    userFhone = value;
                 }
                 else
                 {
@@ -44,17 +49,16 @@ namespace taska_3
                 }
             }
         }
-
-        public int User_age
+        public int UserAge
         {
-            get { return user_age; }
-            set
+            get { return userAge; }
+            set//задаем возрастной диапазон от 16 до 80 лет.
             {
-                if (16 <= value && value <= 80)
+                if (16 <= value || value <= 80)
                 {
-                    user_age = value;
+                    userAge = value;
                 }
-                else if(value > 80)
+                else if (value > 80)
                 {
                     {
                         Console.WriteLine("People don't live that much ");
@@ -65,309 +69,289 @@ namespace taska_3
                     Console.WriteLine("Школьникам тут не место ");
                 }
             }
-
         }
-
-        public string User_code
+        public string UserCode
         {
-            get { return User_code; }
-
-            set
+            get { return userCode; }
+            set//проверяем , является ли первый элемент "+"и колличество цифр , потом проверяем являются ли цифры -цифрами
             {
-
-                if ((value[0] != '+')&&(value.Length != 6))
+                if ((value[0] == '+') && (value.Length == 6))
                 {
-                    Console.WriteLine("Incorrect date");
+                    for (int i = 1; i < 6; i++)
+                    {
+                        if (!(value[i] == '0' || value[i] == '1' || value[i] == '2' || value[i] == '3' ||
+                              value[i] == '4' || value[i] == '5' || value[i] == '6' || value[i] == '7' |
+                              value[i] == '8' || value[i] == '9'))
+                        {
+                            Console.WriteLine("Incorrect date");
+                            break;
+                        }
+
+                    }
+                    userCode = value;
                 }
                 else
                 {
-                    user_code = value;
+                    Console.WriteLine("Incorrect date");
                 }
             }
         }
-
-        public string User_name
+        public string UserName
         {
-            get { return user_name;}
+            get { return userName; }
             set
             {
-                int size_of_name = value.Length;
-                for(int i=0; i<size_of_name;i++)
+                int sizeOfName = value.Length;
+                for (int i = 0; i < sizeOfName; i++)
                 {
-                    if (value[i] == '0' && value[i] == '1' && value[i] == '2' && value[i] == '3' &&
-                        value[i] == '4' && value[i] == '5' && value[i] == '6' && value[i] == '7' &&
-                        value[i] == '8' && value[i] == '9')
+                    if (value[i] == '0' || value[i] == '1' || value[i] == '2' || value[i] == '3' ||
+                        value[i] == '4' || value[i] == '5' || value[i] == '6' || value[i] == '7' |
+                        value[i] == '8' || value[i] == '9')
                     {
                         Console.WriteLine("Incorrect date");
-                        return;
-
+                        break;
                     }
-                    
                 }
-                user_name = value;
-                    
+                userName = value;
             }
         }
-        static phone()
+        static Phone()
         {
             region = "Belarus";
         }
-
-
-       public phone() {
-            User_phone = 2471422;
-            User_name = "Dima";
-            User_age = 19;
-            User_code = "+37529";
-       }
-
-       public phone(string user_code, int user_phone, string user_name, int user_age)
-       {
-           User_phone = user_phone;
-           User_name = user_name;
-           User_age = user_age;
-           User_code = user_code;
-       }
-
-
-
-       public phone(phone user)
-       {
-           this.User_phone = user.User_phone;
-           this.User_name = user.User_name;
-           this.User_age = user.User_age;
-       }
-
-       public override bool Equals(object obj) //переопределили метод  Equals
-       {
-           if (obj == null)
-               return false;
-
-           if (obj.GetType() != this.GetType())
-               return false;
-
-
-           phone user = (phone) obj;
-
-           return (
-               user_age == user.user_age
-               && user_name == user.user_name
-               && user_phone == user.user_phone
-               && user_code == user.user_code
-           );
-       }
-
-
-       public override string ToString()//переопределили метод ToString
-        {//Метод ToString служит для получения строкового представления данного объекта.
-            return "Type : " 
-                + base.ToString()
-                + " Name: "
-                + user_name
-                + "; Number phone: "
-                + user_code
-                + user_phone
-                + "; Location: " 
-                + region
-                +"; Age: "
-                + user_age+" ;";
+        public Phone()
+        {
+            userFhone = "2471422";
+            userName = "Dima";
+            userAge = 19;
+            userCode = "+37529";
         }
+        public Phone(string userCode, int userFhone, string userName, int userAge)
+        {
+            userFhone = userFhone;
+            userName = userName;
+            userAge = userAge;
+            userCode = userCode;
+        }
+        public Phone(Phone user)
+        {
+            this.userFhone = user.userFhone;
+            this.userName = user.userName;
+            this.userAge = user.userAge;
+        }
+        public override bool Equals(object obj) //переопределили метод  Equals
+        {
+            if (obj == null)
+                return false;
 
-
-
+            if (obj.GetType() != this.GetType())
+                return false;
+            Phone user = (Phone)obj;
+            return (
+                userAge == user.userAge
+                && userName == user.userName
+                && userFhone == user.userFhone
+                && userCode == user.userCode
+            );
+        }
+        public override string ToString()//переопределили метод ToString
+        {//Метод ToString служит для получения строкового представления данного объекта.
+            return $"Type : {base.ToString()} \n" +
+                   $"Name: {userName};\n" +
+                   $" Number Phone:{userCode}{userFhone};\n" +
+                   $" Location: {region};\n" +
+                   $" Age: {userAge} ;\n";
+        }
         public override int GetHashCode()//переопределили метод GetHashCode
         {
             // 269 или 47 простые
             int hash = 269;
-            hash = string.IsNullOrEmpty(User_name) ? 0 :User_name.GetHashCode();
-            hash = (hash * 47) + User_phone.GetHashCode();
+            hash = string.IsNullOrEmpty(userName) ? 0 : userName.GetHashCode();
+            hash = (hash * 47) + userFhone.GetHashCode();
             return hash;
         }
-
-       
-        public static void print_my_date(phone user) 
+        public static void print_my_date(Phone user)
         {
-            Console.WriteLine($"User Name : {user.User_name}\n" +
-                $"User Age : {user.User_age} \n" +
-                $"User Number Phone :{user.user_code}{user.User_phone}\n" +
-                $"User Locathion : {phone.region}");
-
+            Console.WriteLine($"User Name : {user.userName}\n" +
+                $"User Age : {user.userAge} \n" +
+                $"User Number Phone :{user.userCode}{user.userFhone}\n" +
+                $"User Locathion : {Phone.region}");
         }
-        
-
-
-
         public int my_Fun(ref int number1, int number2, out int res)
         {
             res = number1 + number2 + 55;
             return number1 += number2;
         }
-
-         ~phone () {
-                    Console.WriteLine("Destructor");
-         }
-        
-
-    }
-
-    public static class Info_phone
-    {
-       public static void info_phone(phone inf)
+        ~Phone()
         {
-            Console.WriteLine( inf.ToString());
+            Console.WriteLine("Destructor");
         }
     }
-
+    public static class Info_Phone
+    {
+        public static void info_Phone(Phone inf)
+        {
+            Console.WriteLine(inf.ToString());
+        }
+    }
     public class MyList
     {
-        private phone[] all_users;
-        private int counter;
-
-        public MyList()
+        private List<Phone> allUsers = new List<Phone>();
+        public void Add(Phone user)//добавляем элемент в коллекцию
         {
-            all_users = new phone[0];
+            allUsers.Add(user);
+
         }
-
-        public void Add(phone user)//добавляем элемент в коллекцию
+        public void deleteAll()
         {
-            Array.Resize(ref all_users, all_users.Length + 1);//увеличиваем массив и записываем в него
-
-            all_users[counter] = user;
-            counter++;
-        }
-        public void delete()//удаление элементов коллекции через уменьшение массива
-        {
-            if (counter != 0)
+            for (int i = allUsers.Count - 1; i >= 0; i--)
             {
-                Array.Resize(ref all_users, all_users.Length - 1);
-                counter--;
+                allUsers.RemoveAt(i);
             }
         }
-        public int Find(phone user)//поиск элементов коллекции через прагон массива
+        public void dellUser(Phone user)
         {
-            for (int i = 0; i < counter; i++)
+            allUsers.Remove(user);
+        }
+        public void dellLast()
+        {
+            allUsers.RemoveAt(allUsers.Count - 1);
+        }
+        public int Find(Phone user)//поиск элементов коллекции через прагон массива
+        {
+            for (int i = 0; i < allUsers.Count; i++)
             {
-                if (user == all_users[i])
+                if (user.Equals(allUsers[i]))
                 {
                     return i + 1;
                 }
             }
-
-            return -1 ;//если не нашли элемент
+            return -1;//если не нашли элемент
         }
-
         public int count_elem()//выводим количество обьектов в коллекции
         {
-            return all_users.Length;
+            return allUsers.Count;
         }
-
         public void WriteAll()//читаем всю коллекцию и выводим её
         {
-            for (int i = 0; i < all_users.Length; i++)
+            for (int i = 0; i < allUsers.Count; i++)
             {
-                Console.WriteLine(all_users[i].ToString() + "");
+                Console.WriteLine($"{allUsers[i].ToString()}  ");
             }
         }
-
-       
-
     }
-
-
-
-
     class Program
     {
+        static void createDate(MyList allUsers)
+        {
+            Phone user = new Phone();
+            Console.WriteLine("Введите возраст пользователя:");
+            user.UserAge = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Введите имя пользователя:");
+            user.UserName = Console.ReadLine();
+
+            Console.WriteLine("Введите код региона пользователя:");
+            user.UserCode = Console.ReadLine();
+
+            Console.WriteLine("Введите номер телефона пользователя:");
+            user.UserFhone = Console.ReadLine();
+            allUsers.Add(user);
+        }
+        static void findUser(MyList allUsers)
+        {
+
+            Phone userForFind = new Phone();
+
+            Console.WriteLine("Введите возраст пользователя:");
+            userForFind.UserAge = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Введите имя пользователя:");
+            userForFind.UserName = Console.ReadLine();
+
+            Console.WriteLine("Введите код региона пользователя:");
+            userForFind.UserCode = Console.ReadLine();
+
+            Console.WriteLine("Введите номер телефона пользователя:");
+            userForFind.UserFhone = Console.ReadLine();
+
+            allUsers.dellUser(userForFind);
+        }
+        private static void dellUser(MyList allUsers)
+        {
+            Phone userForFind = new Phone();
+
+            Console.WriteLine("Введите возраст пользователя:");
+            userForFind.UserAge = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Введите имя пользователя:");
+            userForFind.UserName = Console.ReadLine();
+
+            Console.WriteLine("Введите код региона пользователя:");
+            userForFind.UserCode = Console.ReadLine();
+
+            Console.WriteLine("Введите номер телефона пользователя:");
+            userForFind.UserFhone = Console.ReadLine();
+            allUsers.dellUser(userForFind);
+        }
         static void Main(string[] args)
         {
             int choise;
-            int counter;
-            MyList all_users = new MyList();
-            
-            int counter_of_users=0;
+            MyList allUsers = new MyList();
+
             while (true)
             {
                 Console.WriteLine("Введите 1 ,если хотите создать пользователя \n" +
-                                  "Введите 2 ,если хотите удалить последнего пользователея\n" +
-                                  "Введите 3 ,если хотите вывести информацию о всех пользователей \n" +
-                                  "Введите 4 ,если хотите вывести колличество пользователей в базе\n" +
-                                  "Введите 5 ,если хотите проверить ,существует ли введеный пользователь в базе\n" +
+                                  "Введите 2 ,если хотите удалить всех пользователей\n" +
+                                  "Введите 3 ,если хотите удалить последнего пользователя\n" +
+                                  "Введите 4 ,если хотите удалить определенного пользователя\n" +
+                                  "Введите 5 ,если хотите вывести информацию о всех пользователей \n" +
+                                  "Введите 6 ,если хотите вывести колличество пользователей в базе\n" +
+                                  "Введите 7 ,если хотите проверить ,существует ли введеный пользователь в базе\n" +
                                   "Введите 666 для успешного выхода из программы"
                                   );
                 choise = Convert.ToInt32(Console.ReadLine());
                 switch (choise)
-                { 
-
-                   case 1:
-
-                       Console.WriteLine("Введите 1 , если хотите заполнить по умолчанию\n" +
+                {
+                    case 1:
+                        Console.WriteLine("Введите 1 , если хотите заполнить по умолчанию\n" +
                                          "Введите 2 , если хотите заполнить поля сами");
-
-                       phone user = new phone(); 
-
-                       choise = Convert.ToInt32(Console.ReadLine());
-
-
-                       switch (choise)
-                       {
+                        Phone user = new Phone();
+                        choise = Convert.ToInt32(Console.ReadLine());
+                        switch (choise)
+                        {
                             case 1:
-                                all_users.Add(user);
+                                allUsers.Add(user);
                                 break;
                             case 2:
-                                Console.WriteLine("Введите возраст пользователя:");
-                                user.User_age= Convert.ToInt32(Console.ReadLine());
-
-                                Console.WriteLine("Введите имя пользователя:");
-                                user.User_name=Console.ReadLine();
-
-                                Console.WriteLine("Введите код региона пользователя:");
-                                user.User_code=Console.ReadLine();
-
-                                Console.WriteLine("Введите номер телефона пользователя:");
-                                user.User_phone= Convert.ToInt32(Console.ReadLine());
-                                all_users.Add(user);
-                                ;
+                                createDate(allUsers);
                                 break;
-                       };
-                       break;
-                  case 2 :
-                      all_users.delete();
-                      ;
-                      break; 
-                   case 3 :
-                       all_users.WriteAll();
-                       ;break;
-                   case 4: all_users.count_elem();
-                       break;
-                   case 5:
+                        };
+                        break;
+                    case 2:
+                        allUsers.deleteAll();
+                        break;
+                    case 3:
+                        allUsers.dellLast();
+                        break;
+                    case 4:
+                        dellUser(allUsers);
+                        break;
+                    case 5:
+                        allUsers.WriteAll();
+                        break;
+                    case 6:
+                        Console.WriteLine(allUsers.count_elem());
+                        break;
+                    case 7:
+                        findUser(allUsers);
+                        break;
 
-                       phone user_for_find = new phone();
+                    case 666:
+                        break;
 
-                       Console.WriteLine("Введите возраст пользователя:");
-                       user_for_find.User_age = Convert.ToInt32(Console.ReadLine());
-
-                       Console.WriteLine("Введите имя пользователя:");
-                       user_for_find.User_name = Console.ReadLine();
-
-                       Console.WriteLine("Введите код региона пользователя:");
-                       user_for_find.User_code = Console.ReadLine();
-
-                       Console.WriteLine("Введите номер телефона пользователя:");
-                       user_for_find.User_phone = Convert.ToInt32(Console.ReadLine());
-
-                       switch (all_users.Find(user_for_find))
-                       {
-                            case -1: Console.WriteLine("Такого пользователя нет в базе.");break;
-                            default: Console.WriteLine($"Номер данного пользователя :{all_users.Find(user_for_find)}");break;
-                                
-                       };
-                       break;
-            
-                  case 666:
-                      break; 
-                      
                 }
-                //break;
+
             }
 
         }
