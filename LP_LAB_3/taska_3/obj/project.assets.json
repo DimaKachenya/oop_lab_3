@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\C#\\taska_3\\taska_3\\taska_3.csproj",
+      "projectUniqueName": "C:\\Users\\Dima Kachenya\\Desktop\\git repo\\LP_LAB_3\\taska_3\\taska_3.csproj",
       "projectName": "taska_3",
-      "projectPath": "D:\\C#\\taska_3\\taska_3\\taska_3.csproj",
+      "projectPath": "C:\\Users\\Dima Kachenya\\Desktop\\git repo\\LP_LAB_3\\taska_3\\taska_3.csproj",
       "packagesPath": "C:\\Users\\Dima Kachenya\\.nuget\\packages\\",
-      "outputPath": "D:\\C#\\taska_3\\taska_3\\obj\\",
+      "outputPath": "C:\\Users\\Dima Kachenya\\Desktop\\git repo\\LP_LAB_3\\taska_3\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Dima Kachenya\\AppData\\Roaming\\NuGet\\NuGet.Config",
