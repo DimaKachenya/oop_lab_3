@@ -1,0 +1,11 @@
+D:\C#\taska_3\taska_3\bin\Debug\netcoreapp3.0\taska_3.exe
+D:\C#\taska_3\taska_3\bin\Debug\netcoreapp3.0\taska_3.deps.json
+D:\C#\taska_3\taska_3\bin\Debug\netcoreapp3.0\taska_3.runtimeconfig.json
+D:\C#\taska_3\taska_3\bin\Debug\netcoreapp3.0\taska_3.runtimeconfig.dev.json
+D:\C#\taska_3\taska_3\bin\Debug\netcoreapp3.0\taska_3.dll
+D:\C#\taska_3\taska_3\bin\Debug\netcoreapp3.0\taska_3.pdb
+D:\C#\taska_3\taska_3\obj\Debug\netcoreapp3.0\taska_3.csprojAssemblyReference.cache
+D:\C#\taska_3\taska_3\obj\Debug\netcoreapp3.0\taska_3.AssemblyInfoInputs.cache
+D:\C#\taska_3\taska_3\obj\Debug\netcoreapp3.0\taska_3.AssemblyInfo.cs
+D:\C#\taska_3\taska_3\obj\Debug\netcoreapp3.0\taska_3.dll
+D:\C#\taska_3\taska_3\obj\Debug\netcoreapp3.0\taska_3.pdb
